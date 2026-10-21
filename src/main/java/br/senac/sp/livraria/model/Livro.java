@@ -10,9 +10,7 @@ public record Livro(
         double preco,
         int anoEdicao
 ) {
-    public void setId (int id){
-        this.id = id;
-    }
+
 
 
 
