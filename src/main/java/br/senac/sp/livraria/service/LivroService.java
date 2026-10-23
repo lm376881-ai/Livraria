@@ -34,6 +34,9 @@ public class LivroService {
 
     }
 
+    public List<Livro> listarLivros() {
+        return livros;
+    }
 
 
 }
