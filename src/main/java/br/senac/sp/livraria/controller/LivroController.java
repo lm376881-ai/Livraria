@@ -40,10 +40,10 @@ public class LivroController {
 
         // pode ter mais de um get porém precisa ser eliminada a ambiguidade como no exemplo abixo método é o mesmo porém com url diferente
         @GetMapping("/{id}") //id tem que ser o mesmo atributo no patch variable ("id") indicando qual o valor pegar na requisição;
-        public String buscarPorId (@PathVariable ("id") int id){
+        public ResponseEntity<Livro> buscarPorId (@PathVariable ("id") int id){
 
 
-            return "Você chamou o método buscar por ID: " + id;
+            return ResponseEntity.status
         }
 
 }

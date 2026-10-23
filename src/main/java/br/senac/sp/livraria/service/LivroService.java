@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -14,7 +15,6 @@ public class LivroService {
 
     private final List<Livro> livros = new ArrayList<>();
     private final AtomicInteger geradorDeId = new AtomicInteger(1);  // utilizado para gerar IDs
-
 
 
     // Método para cadastrar o produto //
@@ -38,5 +38,16 @@ public class LivroService {
         return livros;
     }
 
+    public Optional<Livro> buscarPorId(int id) {
+        Optional<Livro> livroEnontrado = livros
+                .stream()
+                .filter(livro -> livro.id() == id)
+                .findFirst(); // ao encontrar o livro para o looping
+
+        return livroEnontrado;
+
+    }
 
 }
+
+
