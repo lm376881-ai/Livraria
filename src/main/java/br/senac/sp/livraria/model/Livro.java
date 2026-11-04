@@ -1,6 +1,8 @@
 package br.senac.sp.livraria.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 // Mapeando a classe Livro com a tabela tbl_livro no banco de dados
 @Entity
@@ -11,8 +13,13 @@ public class Livro {
        @GeneratedValue(strategy = GenerationType.IDENTITY)
        private Integer id;
 
+       @NotBlank(message = "O titulo do livro é obrigátorio !")    // mensagem de erro
        private String titulo;
+
+       @NotBlank(message = "O nome do Autor é Obrigátorio!")
+       @Size(min = 3, max = 20, message = " O campo autor deve ter no minimo 3 caracteres e no maximo 20 caracteres.") // para exibir mensagem
        private String autor;
+
        private String editora;
        private double preco;
 
