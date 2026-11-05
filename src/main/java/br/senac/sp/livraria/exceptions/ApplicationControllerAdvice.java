@@ -1,6 +1,7 @@
 package br.senac.sp.livraria.exceptions;
 
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
@@ -28,7 +29,7 @@ public class ApplicationControllerAdvice {
            System.out.println(campo + " - " + error.getDefaultMessage());
            errorJson.put(campo, error.getDefaultMessage());
        }
-        return ResponseEntity.ok(errorJson);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorJson);   // como chamar o erro e médoto criado a cima
     }
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> teste (RuntimeException ex){

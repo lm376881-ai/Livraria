@@ -1,8 +1,9 @@
 package br.senac.sp.livraria.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
+import java.time.LocalDate;
 
 // Mapeando a classe Livro com a tabela tbl_livro no banco de dados
 @Entity
@@ -21,10 +22,27 @@ public class Livro {
        private String autor;
 
        private String editora;
+
+       @Positive(message = "O preço do livro deve ser maior que zero!!!")
        private double preco;
 
        @Column(name = "ano_edicao")
        private int anoEdicao;
+
+
+       @Column(name = "data_lancamento")
+       @PastOrPresent(message = "A data de lançamento deve ser uma data no passado!!!")
+       private LocalDate dataLancamento;
+
+
+       public LocalDate getDataLancamento() {
+              return dataLancamento;
+       }
+
+       public void setDataLancamento(LocalDate dataLancamento) {
+              this.dataLancamento = dataLancamento;
+       }
+
 
        public Integer getId() {
               return id;
