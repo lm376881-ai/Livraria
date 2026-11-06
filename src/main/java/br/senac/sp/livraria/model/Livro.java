@@ -21,7 +21,9 @@ public class Livro {
        @Size(min = 3, max = 20, message = " O campo autor deve ter no minimo 3 caracteres e no maximo 20 caracteres.") // para exibir mensagem
        private String autor;
 
-       private String editora;
+       @ManyToOne
+       @JoinColumn(name = "id_editora", nullable = false)
+       private Editora editora;
 
        @Positive(message = "O preço do livro deve ser maior que zero!!!")
        private double preco;
@@ -29,6 +31,14 @@ public class Livro {
        @Column(name = "ano_edicao")
        private int anoEdicao;
 
+       public Editora editora() {
+              return editora;
+       }
+
+       public Livro setEditora(Editora editora) {
+              this.editora = editora;
+              return this;
+       }
 
        @Column(name = "data_lancamento")
        @PastOrPresent(message = "A data de lançamento deve ser uma data no passado!!!")
@@ -66,14 +76,6 @@ public class Livro {
 
        public void setAutor(String autor) {
               this.autor = autor;
-       }
-
-       public String getEditora() {
-              return editora;
-       }
-
-       public void setEditora(String editora) {
-              this.editora = editora;
        }
 
        public double getPreco() {
