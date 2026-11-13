@@ -14,36 +14,26 @@ public class Livro {
        @GeneratedValue(strategy = GenerationType.IDENTITY)
        private Integer id;
 
-       @NotBlank(message = "O titulo do livro é obrigátorio !")    // mensagem de erro
+       @NotBlank(message = "O título do livro é obrigatório!")
        private String titulo;
 
-       @NotBlank(message = "O nome do Autor é Obrigátorio!")
-       @Size(min = 3, max = 20, message = " O campo autor deve ter no minimo 3 caracteres e no maximo 20 caracteres.") // para exibir mensagem
+       @NotBlank(message = "O nome do autor é obrigatório!")
+       @Size(min = 3, max = 20, message = "O campo autor deve ter no mínimo 3 caracteres e no máximo 20 caracteres.")
        private String autor;
 
        @ManyToOne
        @JoinColumn(name = "id_editora", nullable = false)
        private Editora editora;
 
-       @Positive(message = "O preço do livro deve ser maior que zero!!!")
+       @Positive(message = "O preço do livro deve ser maior que zero!")
        private double preco;
 
        @Column(name = "ano_edicao")
        private int anoEdicao;
 
-       public Editora editora() {
-              return editora;
-       }
-
-       public Livro setEditora(Editora editora) {
-              this.editora = editora;
-              return this;
-       }
-
        @Column(name = "data_lancamento")
-       @PastOrPresent(message = "A data de lançamento deve ser uma data no passado!!!")
+       @PastOrPresent(message = "A data de lançamento deve ser uma data no passado!")
        private LocalDate dataLancamento;
-
 
        public LocalDate getDataLancamento() {
               return dataLancamento;
@@ -52,7 +42,6 @@ public class Livro {
        public void setDataLancamento(LocalDate dataLancamento) {
               this.dataLancamento = dataLancamento;
        }
-
 
        public Integer getId() {
               return id;
@@ -76,6 +65,14 @@ public class Livro {
 
        public void setAutor(String autor) {
               this.autor = autor;
+       }
+
+       public Editora getEditora() {
+              return editora;
+       }
+
+       public void setEditora(Editora editora) {
+              this.editora = editora;
        }
 
        public double getPreco() {

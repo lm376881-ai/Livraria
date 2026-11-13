@@ -33,6 +33,7 @@ public class ApplicationControllerAdvice {
     }
     @ExceptionHandler(RuntimeException.class)
     public ResponseEntity<?> teste (RuntimeException ex){
+
         return ResponseEntity.ok("Erro de Execução!");
     }
 
